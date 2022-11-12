@@ -117,3 +117,4 @@ Homestead.json
 .phpunit.result.cache
 
 
+_lighthouse_ide_helper.php
