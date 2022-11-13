@@ -1,0 +1,38 @@
+name: Testing
+description: Test with phpcs and phpunit
+runs:
+  using: composite
+  steps:
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        extensions: mbstring, dom, fileinfo, mysql
+        tools: composer
+        coverage: xdebug
+    - name: Cache composer dependencies
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: ./vendor
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+    - name: Install composer dependencies
+      if: steps.composer-cache.outputs.cache-hit != 'true'
+      run: composer install --ignore-platform-reqs
+      shell: bash
+    - name: Prepare the application
+      run: php artisan key:generate --env=testing
+      shell: bash
+    - name: Clear config
+      run: php artisan config:clear
+      shell: bash
+    - name: Test with phpcs
+      run: composer phpcs
+      shell: bash
+    - name: Run migration
+      run: php artisan migrate --force --env=testing
+      shell: bash
+    - name: Test with phpunit
+      run: php artisan test --parallel
+      shell: bash
