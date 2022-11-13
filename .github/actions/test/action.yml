@@ -24,16 +24,13 @@ runs:
     - name: Prepare the application
       run: |
         php -r "file_exists('.env') || copy('.env.example', '.env');"
-        php artisan key:generate --env=testing
+        php artisan key:generate
       shell: bash
     - name: Clear config
       run: php artisan config:clear
       shell: bash
     - name: Test with phpcs
       run: composer phpcs
-      shell: bash
-    - name: Run migration
-      run: php artisan migrate -v
       shell: bash
     - name: Test with phpunit
       run: php artisan test --parallel
