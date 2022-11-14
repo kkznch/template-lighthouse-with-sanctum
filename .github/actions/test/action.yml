@@ -32,6 +32,9 @@ runs:
     - name: Test with phpcs
       run: composer phpcs
       shell: bash
+    - name: Test with phpstan
+      run: composer phpstan
+      shell: bash
     - name: Test with phpunit
       run: php artisan test --parallel
       shell: bash
