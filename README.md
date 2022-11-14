@@ -17,10 +17,6 @@
     ```
 3. Install PHP packages
     ```sh
-    $ composer install
-    ```
-4. Install PHP packages in the docker container
-    ```sh
     $ docker run --rm \
         -u "$(id -u):$(id -g)" \
         -v $(pwd):/var/www/html \
