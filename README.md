@@ -19,11 +19,7 @@
     ```sh
     $ composer install
     ```
-4. Start the docker container
-    ```sh
-    $ ./vendor/bin/sail up -d
-    ```
-5. Install PHP packages in the docker container
+4. Install PHP packages in the docker container
     ```sh
     $ docker run --rm \
         -u "$(id -u):$(id -g)" \
