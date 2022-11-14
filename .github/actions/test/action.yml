@@ -1,5 +1,5 @@
 name: Testing
-description: Test with phpcs and phpunit
+description: Test with phpcs, phpstan and phpunit
 runs:
   using: composite
   steps:
@@ -25,9 +25,6 @@ runs:
       run: |
         php -r "file_exists('.env') || copy('.env.example', '.env');"
         php artisan key:generate
-      shell: bash
-    - name: Clear config
-      run: php artisan config:clear
       shell: bash
     - name: Test with phpcs
       run: composer phpcs
