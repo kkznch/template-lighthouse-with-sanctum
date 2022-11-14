@@ -17,11 +17,8 @@
 
     <!-- 除外ディレクトリ・ファイル-->
     <exclude-pattern>/bootstrap/</exclude-pattern>
-    <exclude-pattern>/config/</exclude-pattern>
-    <exclude-pattern>/database/</exclude-pattern>
     <exclude-pattern>/public/</exclude-pattern>
     <exclude-pattern>/resources/</exclude-pattern>
-    <exclude-pattern>/routes/</exclude-pattern>
     <exclude-pattern>/storage/</exclude-pattern>
     <exclude-pattern>/vendor/</exclude-pattern>
     <exclude-pattern>/app/Console/Kernel.php</exclude-pattern>
